@@ -33,4 +33,14 @@ class BookRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getPaginateQuery()
+    {
+        $query = $this->createQueryBuilder('b');
+
+        $query->orderBy('b.id', 'DESC')
+            ->getQuery();
+        
+        return $query;  
+    }
 }

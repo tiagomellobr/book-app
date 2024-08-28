@@ -1,0 +1,15 @@
+<div{{ attributes }}>
+    <div class="row">
+        <div class="col">
+            <h2>Books</h2>
+        </div>    
+    </div>
+    <div class="row mt-1">
+        {% for book in paginator.getItems %}
+            <div class="col-4 mb-3">
+                <twig:Book book="{{ book }}" />
+            </div>
+        {% endfor %}
+        <twig:Paginator paginator="{{ paginator }}" />
+    </div>
+</div>

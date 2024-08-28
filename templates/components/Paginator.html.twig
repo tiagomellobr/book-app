@@ -1,0 +1,43 @@
+<div{{ attributes }}>
+    {% set _currentPage = app.request.query.get('page') ?: 1 %}
+    {% set _currentRoute = app.request.attributes.get('_route') %}
+    {% set _lastPage = paginator.lastPage %}
+    {% set _currentParams = app.request.query.all|merge(app.request.attributes.get('_route_params')) %}
+
+    {% if paginator.lastPage > 1 %}
+        <nav>
+            <ul class="pagination pagination pagination-rounded mb-1 justify-content-center d-flex flex-wrap">
+                <li class="page-item">
+                    <a class="page-link" href="#">{{ _currentPage }} of {{ _lastPage }}</a>
+                </li>
+                {# {% for i in 1..paginator.lastPage %}
+                    <li class="page-item {% if i == _currentPage %}active{% endif %}">
+                        <a class="page-link" href="{{ path(_currentRoute, _currentParams|merge({page: i})) }}">{{ i }}</a>
+                    </li>
+                {% endfor %} #}
+            </ul>
+            <ul class="pagination pagination pagination-rounded mb-10 justify-content-center">
+                <li class="page-item{{ _currentPage <= 1 ? ' disabled' : '' }}">
+                    <a class="page-link text-capitalize" href="{{ path(_currentRoute, _currentParams|merge({page: 1})) }}" aria-label="{{ 'first' |trans }}">
+                        <i class="mdi mdi-chevron-double-left"></i> {{ 'first' |trans }}
+                    </a>
+                </li>
+                <li class="page-item{{ _currentPage <= 1 ? ' disabled' : '' }}">
+                    <a class="page-link text-capitalize" href="{{ path(_currentRoute, _currentParams|merge({page: _currentPage - 1})) }}" aria-label="{{ 'previous' |trans }}">
+                        <i class="mdi mdi-chevron-left"></i> {{ 'previous' |trans }}
+                    </a>
+                </li>
+                <li class="page-item {{ _currentPage >= paginator.lastPage ? ' disabled' : '' }}">
+                    <a class="page-link text-capitalize" href="{{ path(_currentRoute, _currentParams|merge({page: _currentPage + 1})) }}" aria-label="{{ 'next' |trans }}">
+                        {{ 'next' |trans }} <i class="mdi mdi-chevron-right"></i>
+                    </a>
+                </li>
+                <li class="page-item {{ _currentPage >= paginator.lastPage ? ' disabled' : '' }}">
+                    <a class="page-link text-capitalize" href="{{ path(_currentRoute, _currentParams|merge({page: _lastPage})) }}" aria-label="{{ 'last' |trans }}">
+                        {{ 'last' |trans }} <i class="mdi mdi-chevron-double-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+</div>
