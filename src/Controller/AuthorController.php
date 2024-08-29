@@ -42,7 +42,18 @@ class AuthorController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $authorRepository->add($author, true);
+            try {
+                $authorRepository->add($author, true);
+            } catch (\Error $error) {
+
+                $this->addFlash(
+                    'error', $error->getMessage()
+                );
+
+                return $this->redirectToRoute('app_author_form', [
+                    'id' => $author->getId()
+                ]);
+            }
 
             $this->addFlash(
                 'success', 'Your author has been saved successfully!'
@@ -62,7 +73,15 @@ class AuthorController extends AbstractController
         AuthorRepository $authorRepository,
     ): Response
     {
-        $authorRepository->remove($author, true);
+        try {
+            $authorRepository->remove($author, true);
+        } catch (\Error $error) {
+            $this->addFlash(
+                'error', $error->getMessage()
+            );
+
+            return $this->redirectToRoute('app_author');
+        }
 
         $this->addFlash(
             'success', 'Your author has been deleted successfully!'

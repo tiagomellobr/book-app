@@ -42,7 +42,18 @@ class SubjectController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $subjectRepository->add($subject, true);
+            try {
+                $subjectRepository->add($subject, true);
+            } catch (\Error $error) {
+
+                $this->addFlash(
+                    'error', $error->getMessage()
+                );
+
+                return $this->redirectToRoute('app_subject_form', [
+                    'id' => $subject->getId()
+                ]);
+            }
 
             $this->addFlash(
                 'success', 'Your subject has been saved successfully!'
@@ -62,7 +73,15 @@ class SubjectController extends AbstractController
         SubjectRepository $subjectRepository,
     ): Response
     {
-        $subjectRepository->remove($subject, true);
+        try {
+            $subjectRepository->remove($subject, true);
+        } catch (\Error $error) {
+            $this->addFlash(
+                'error', $error->getMessage()
+            );
+
+            return $this->redirectToRoute('app_subject');
+        }
 
         $this->addFlash(
             'success', 'Your subject has been deleted successfully!'

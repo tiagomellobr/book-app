@@ -6,12 +6,6 @@
     <div class="row">
         <div class="col">
             <h2>Subjects</h2>
-            {% for flash in app.flashes('success') %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    {{ flash }}
-                </div>
-            {% endfor %}
         </div>    
         <div class="col text-end">
             <a href="{{ path('app_subject_form') }}" class="btn btn-danger rounded-pill mb-3"><i class="bi bi-plus-lg"></i> Create New</a>

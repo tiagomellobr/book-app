@@ -42,7 +42,18 @@ class BookController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $bookRepository->add($book, true);
+            try {
+                $bookRepository->add($book, true);
+            } catch (\Error $error) {
+
+                $this->addFlash(
+                    'error', $error->getMessage()
+                );
+
+                return $this->redirectToRoute('app_book_form', [
+                    'id' => $book->getId()
+                ]);
+            }
 
             $this->addFlash(
                 'success', 'Your book has been saved successfully!'
@@ -62,7 +73,15 @@ class BookController extends AbstractController
         BookRepository $bookRepository,
     ): Response
     {
-        $bookRepository->remove($book, true);
+        try {
+            $bookRepository->remove($book, true);
+        } catch (\Error $error) {
+            $this->addFlash(
+                'error', $error->getMessage()
+            );
+
+            return $this->redirectToRoute('app_book');
+        }
 
         $this->addFlash(
             'success', 'Your book has been deleted successfully!'
