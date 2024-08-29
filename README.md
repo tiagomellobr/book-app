@@ -2,12 +2,18 @@
 
 ### Run Project
 
+[Install Symfony CLI](https://symfony.com/download)
+
 ```bash
-$ composer install
+$ symfony composer install
 ```
 
 ```bash
 $ docker-compose up -d
+```
+
+```bash
+$ symfony console doctrine:migrations:migrate
 ```
 
 ```bash
@@ -19,5 +25,5 @@ $ npm run dev
 ```
 
 ```bash
-$ php -S localhost:8800 -t public
+$ symfony server:start -d
 ```
