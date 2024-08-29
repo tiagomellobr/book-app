@@ -9,9 +9,7 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        {{ encore_entry_script_tags('app') }}
     </head>
     <body>
         <header>
@@ -37,5 +35,7 @@
                 </div>
             </div>
         </footer>
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

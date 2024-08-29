@@ -10,7 +10,7 @@
 			<div class="collapse navbar-collapse" id="navbarScroll">
 				<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">{{ 'Books APP' |trans }}</a>
+						<a class="nav-link" aria-current="page" href="{{ path('app_home') }}">{{ 'Books APP' |trans }}</a>
 					</li>
 				</ul>
                 {% if app.user %}
@@ -21,7 +21,10 @@
                         </a>
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
                             <li>
-                                <a class="dropdown-item" href="{{ path('app_book') }}"><i class="bi bi-bar-chart"></i> {{ 'Books Report' |trans }}</a>
+                                <a class="dropdown-item" href="{{ path('app_report') }}"><i class="bi bi-bar-chart"></i> {{ 'Report' |trans }}</a>
+                            </li>
+							<li>
+                                <a class="dropdown-item" href="{{ path('app_book') }}"><i class="bi bi-book-half"></i> {{ 'Books' |trans }}</a>
                             </li>
 							<li>
                                 <a class="dropdown-item" href="{{ path('app_subject') }}"><i class="bi bi-tags"></i> {{ 'Subjects' |trans }}</a>
@@ -31,13 +34,13 @@
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
-                                <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="bi bi-box-arrow-right"></i> {{ 'Sign out' |trans }}</a>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="bi bi-box-arrow-left"></i> {{ 'Sign out' |trans }}</a>
                             </li>
                         </ul>
                     </div> 
 				{% else %}   
 					<a href="{{ path('app_login') }}" class="d-block link-dark text-decoration-none">
-						<small class="mx-1">Login</small>
+						<i class="bi bi-box-arrow-in-right"></i> Login
 					</a>                
                 {% endif %}
 			</div>

@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="mb-5">
+    <div class="row">
+        <div class="col">
+            <h2>Report</h2>
+        </div>    
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-5">
+           <div class="card">
+             <div class="card-body">
+                <canvas id="pieChart"></canvas>
+             </div>
+           </div>
+        </div>
+        <div class="col-md-7">
+           <div class="card">
+             <div class="card-body">
+                <canvas id="barChart"></canvas>
+             </div>
+           </div>
+        </div>    
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-responsive mb-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="10%"><span class="text-capitalize">{{ 'ID' |trans }}</span></th>
+                                    <th scope="col"><span class="text-capitalize">{{ 'name' |trans }}</span></th>
+                                    <th scope="col"><span class="text-capitalize">{{ 'total books' |trans }}</span></th>
+                                    <th scope="col"><span class="text-capitalize">{{ 'books' |trans }}</span></th>
+                                    <th scope="col"><span class="text-capitalize">{{ 'subjects' |trans }}</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in reportData %}
+                                    <tr>
+                                        <td>{{ item.id }}</td>
+                                        <td>{{ item.author_name }}</td>
+                                        <td>{{ item.total_books }}</td>
+                                        <td>{{ item.books }}</td>
+                                        <td>{{ item.subjects }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const pieChart = document.getElementById('pieChart');
+
+    const labels = [
+        {% for item in reportData %}
+            '{{ item.author_name }}',
+        {% endfor %}
+    ];
+
+    const data = [
+        {% for item in reportData %}
+            '{{ item.total_books }}',
+        {% endfor %}
+    ];
+
+    const dataPie = {
+        labels,
+        datasets: [{
+            label: 'Total Books',
+            data,
+            hoverOffset: 4
+        }],
+    };
+
+    const configPie = {
+        type: 'pie',
+        data: dataPie,
+    };
+
+    new Chart(pieChart, configPie);
+</script>
+
+<script>
+    const barChart = document.getElementById('barChart');
+
+    const dataBar = {
+        labels: labels,
+        datasets: [{
+            label: 'Total Books',
+            data,
+            borderWidth: 1
+        }],
+    };
+
+    const configBar = {
+        type: 'bar',
+        data: dataBar,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            console.log(context);
+                        }
+                    }
+                }
+            }
+        },
+    };
+
+    new Chart(barChart, configBar);
+</script>
+{% endblock %}
