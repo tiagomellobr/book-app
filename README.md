@@ -17,6 +17,10 @@ $ symfony console doctrine:migrations:migrate
 ```
 
 ```bash
+$ symfony console doctrine:fixtures:load 
+```
+
+```bash
 $ npm i
 ```
 
