@@ -5,31 +5,31 @@
 [Install Symfony CLI](https://symfony.com/download)
 
 ```bash
-$ symfony composer install
+symfony composer install
 ```
 
 ```bash
-$ docker-compose up -d
+docker-compose up -d
 ```
 
 ```bash
-$ symfony console doctrine:migrations:migrate
+symfony console doctrine:migrations:migrate
 ```
 
 ```bash
-$ symfony console doctrine:fixtures:load 
+symfony console doctrine:fixtures:load 
 ```
 
 ```bash
-$ npm i
+npm i
 ```
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 ```bash
-$ symfony server:start -d
+symfony server:start -d
 ```
 
 ### Access Information
