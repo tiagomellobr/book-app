@@ -17,18 +17,22 @@
                     <div class="dropdown text-end">
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ app.user.getProfilePhotoUrl }}" alt="mdo" width="32" height="32" class="rounded-circle border">
-                            <small class="mx-1">{{ app.user.name }}</small>
+                            <small class="mx-1">{{ app.user.email }}</small>
                         </a>
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                            <li>
+                            {# <li>
                                 <a class="dropdown-item" href="{{ path('app_user_profile') }}">{{ 'Profile' |trans }}</a>
-                            </li>
+                            </li> #}
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}">{{ 'Sign out' |trans }}</a>
                             </li>
                         </ul>
-                    </div>                    
+                    </div> 
+				{% else %}   
+					<a href="{{ path('app_login') }}" class="d-block link-dark text-decoration-none">
+						<small class="mx-1">Login</small>
+					</a>                
                 {% endif %}
 			</div>
 		</div>
