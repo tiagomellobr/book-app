@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="mb-5">
+    <div class="row">
+        <div class="col">
+            <h2>Subjects - Form</h2>
+        </div>    
+    </div>
+    <div class="row mt-1">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        {{ form_start(form) }}                    
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.description, 
+                                'Description' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.description,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Description' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.description) }}
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary text-capitalize" type="submit">{{ 'save' |trans }}</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

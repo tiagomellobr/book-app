@@ -33,4 +33,14 @@ class SubjectRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getPaginateQuery()
+    {
+        $query = $this->createQueryBuilder('s');
+
+        $query->orderBy('s.id', 'DESC')
+            ->getQuery();
+        
+        return $query;  
+    }
 }
