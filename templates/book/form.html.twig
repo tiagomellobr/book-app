@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="mb-5">
+    <div class="row">
+        <div class="col">
+            <h2>Books - Form</h2>
+        </div>    
+    </div>
+    <div class="row mt-1">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        {{ form_start(form) }}                    
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.title, 
+                                'Title' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.title,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Title' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.title) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.publisher, 
+                                'Publisher' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.publisher,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Publisher' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.publisher) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.edition, 
+                                'Edition' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.edition,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Edition' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.edition) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.publicationYear, 
+                                'Year' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.publicationYear,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Year' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.publicationYear) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.price, 
+                                'Price' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.price,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Price' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.price) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.author, 
+                                'Author' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.author,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Author' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.author) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(
+                                form.subjects, 
+                                'Subjects' |trans, 
+                                {
+                                    'label_attr': {'class': 'form-label'}
+                                }
+                            )}}
+                            {{ form_widget(
+                                form.subjects,
+                                {
+                                    'attr': {
+                                        'class': 'form-control',
+                                        'placeholder': 'Subjects' |trans
+                                    }
+                                }
+                            )}}
+                            {{ form_errors(form.author) }}
+                        </div>
+
+                        <div class="mb-3">
+                            <button class="btn btn-primary text-capitalize" type="submit">{{ 'save' |trans }}</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

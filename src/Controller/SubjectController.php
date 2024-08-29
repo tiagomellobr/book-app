@@ -21,7 +21,7 @@ class SubjectController extends AbstractController
     ): Response
     {
         $query = $subjectRepository->getPaginateQuery();
-        $paginator->paginate($query, $request->query->getInt('page', 1), 20);
+        $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
         return $this->render('subject/index.html.twig', [
             'paginator' => $paginator,

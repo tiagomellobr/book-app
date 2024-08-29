@@ -21,7 +21,7 @@ class AuthorController extends AbstractController
     ): Response
     {
         $query = $authorRepository->getPaginateQuery();
-        $paginator->paginate($query, $request->query->getInt('page', 1), 20);
+        $paginator->paginate($query, $request->query->getInt('page', 1), 10);
 
         return $this->render('author/index.html.twig', [
             'paginator' => $paginator,
