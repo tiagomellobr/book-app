@@ -31,3 +31,15 @@ $ npm run dev
 ```bash
 $ symfony server:start -d
 ```
+
+### Access Information
+
+Email
+```
+user@mail.com
+```
+
+Password
+```
+pass1234
+```
