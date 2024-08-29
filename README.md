@@ -4,6 +4,8 @@
 
 [Install Symfony CLI](https://symfony.com/download)
 
+Copy, paste and rename the .env.example to .env 
+
 ```bash
 symfony composer install
 ```
