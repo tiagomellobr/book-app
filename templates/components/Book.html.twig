@@ -16,10 +16,12 @@
                 <li class="list-group-item">Year: {{ book.publicationYear }}</li>
             </ul>
         </div>
+        {% if book.subjects|length > 0 %}
         <div class="card-footer">
             {% for subject in book.subjects %}
                 <a href="#" class="badge bg-primary text-capitalize">{{ subject.description }}</a>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 </div>

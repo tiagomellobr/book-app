@@ -33,4 +33,14 @@ class AuthorRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getPaginateQuery()
+    {
+        $query = $this->createQueryBuilder('u');
+
+        $query->orderBy('u.id', 'DESC')
+            ->getQuery();
+        
+        return $query;
+    }
 }

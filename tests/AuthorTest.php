@@ -23,6 +23,9 @@ class AuthorTest extends TestCase
             ->method('remove')
             ->with([$author, true]);
 
+        $repository->expects($this->any())
+            ->method('getPaginateQuery');
+
         $this->assertTrue(true);
     }
 }
