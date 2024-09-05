@@ -14,6 +14,7 @@
                 <li class="list-group-item">Publisher: {{ book.publisher }}</li>
                 <li class="list-group-item">Edition: {{ book.edition }}</li>
                 <li class="list-group-item">Year: {{ book.publicationYear }}</li>
+                <li class="list-group-item">Price: $ {{ book.price | number_format(2, ',') }}</li>
             </ul>
         </div>
         {% if book.subjects|length > 0 %}
