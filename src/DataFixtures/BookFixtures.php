@@ -19,7 +19,8 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
         $author = $this->getReference(AuthorFixtures::AUTHOR_REFERENCE);
         $subject = $this->getReference(SubjectFixtures::SUBJECT_REFERENCE);
 
-        for ($i=0; $i < 10; $i++) {
+        $total = rand(1, 10);
+        for ($i=0; $i < $total; $i++) {
             $title =  ucwords(implode(" ", $this->faker->words(3)));
             $publisher = $this->faker->company;
             $edition = $this->faker->numberBetween(1, 100);
